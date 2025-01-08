@@ -1,0 +1,2 @@
+ALTER TABLE topicos
+MODIFY COLUMN autor VARCHAR(30);

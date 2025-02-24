@@ -4,8 +4,8 @@ public enum Curso {
 
     JAVA,
     JAVASCRIPT,
-    NOTEJS,
-    PHYTON,
+    NODEJS,
+    PYTHON,
     C,
     MYSQL,
     REACT,

@@ -1,9 +1,7 @@
 package com.alura.forohub.controller;
 
-import com.alura.forohub.topico.Curso;
-import com.alura.forohub.topico.Topico;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.alura.forohub.domain.topico.Curso;
+import com.alura.forohub.domain.topico.Topico;
 
 import java.time.LocalDateTime;
 

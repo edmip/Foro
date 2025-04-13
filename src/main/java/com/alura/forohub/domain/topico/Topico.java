@@ -1,4 +1,4 @@
-package com.alura.forohub.topico;
+package com.alura.forohub.domain.topico;
 
 
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Entity(name = "topico")
 
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 public class Topico {
 
     @Id

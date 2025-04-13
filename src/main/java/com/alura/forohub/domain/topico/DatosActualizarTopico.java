@@ -1,6 +1,5 @@
-package com.alura.forohub.topico;
+package com.alura.forohub.domain.topico;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;

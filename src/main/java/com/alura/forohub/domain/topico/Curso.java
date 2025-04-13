@@ -1,4 +1,4 @@
-package com.alura.forohub.topico;
+package com.alura.forohub.domain.topico;
 
 public enum Curso {
 

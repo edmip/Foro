@@ -1,10 +1,10 @@
 package com.alura.forohub.controller;
 
 
-import com.alura.forohub.topico.DatosActualizarTopico;
-import com.alura.forohub.topico.DatosRegistroTopico;
-import com.alura.forohub.topico.ITopicoRepositori;
-import com.alura.forohub.topico.Topico;
+import com.alura.forohub.domain.topico.DatosActualizarTopico;
+import com.alura.forohub.domain.topico.DatosRegistroTopico;
+import com.alura.forohub.domain.topico.ITopicoRepositori;
+import com.alura.forohub.domain.topico.Topico;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 import java.util.Optional;
 
 
@@ -34,8 +34,8 @@ public class TopicoController {
 
 
     @GetMapping
-    public Page<DatosConsultaTopico> consultarTopico(@PageableDefault(size = 5, sort = "fechaCreacion", direction = Sort.Direction.ASC) Pageable paginacion){
-        return topicoRepository.findAll(paginacion).map(DatosConsultaTopico::new);
+    public ResponseEntity<Page<DatosConsultaTopico>>  consultarTopico(@PageableDefault(size = 5, sort = "fechaCreacion", direction = Sort.Direction.ASC) Pageable paginacion){
+        return ResponseEntity.ok(topicoRepository.findAll(paginacion).map(DatosConsultaTopico::new)) ;
     }
 
     @PutMapping("/{id}")
@@ -66,15 +66,17 @@ public class TopicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void borrarTopico(@PathVariable Long id){
+    public ResponseEntity borrarTopico(@PathVariable Long id){
 
         Optional<Topico> optionalTopico = topicoRepository.findById(id);
 
         if (optionalTopico.isPresent()){
             Topico topico = optionalTopico.get();
             topicoRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
         }else {
-            System.out.println("el topico no existe e la base");
+            System.out.println("el topico no existe en la base");
+            return ResponseEntity.notFound().build();
         }
 
     }
